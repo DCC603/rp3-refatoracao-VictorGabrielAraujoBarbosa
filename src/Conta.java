@@ -3,15 +3,10 @@ import java.util.List;
 
 public class Conta {
 
-    // TODO(#1) REFATORAR: Esses dados deveriam ficar em outro lugar
-    private String nomeCliente;
-    private String cpfCliente;
-    private String telefoneCliente;
+    // DONE(#1) REFATORAÇÃO 1: criação da classe cliente e da classe agência, e mudança dos dados para lá.
+    private Cliente _cliente;
+    private Agencia _agencia;
 
-    // TODO(#1) REFATORAR: Esses dados deveriam ficar em outro lugar
-    private int numAgencia;
-    private int numConta;
-    private String gerente;
 
     // TODO(#2) REFATORAR: Esse nome não é o ideal para representar o saldo da conta
     private double valor;
@@ -19,12 +14,8 @@ public class Conta {
     private List<Operacao> operacoes;
 
     public Conta(String nomeCliente, String cpfCliente, String telefoneCliente, int numAgencia, int numConta, String gerente, double valor) {
-        this.nomeCliente = nomeCliente;
-        this.cpfCliente = cpfCliente;
-        this.telefoneCliente = telefoneCliente;
-        this.numAgencia = numAgencia;
-        this.numConta = numConta;
-        this.gerente = gerente;
+        this._cliente = new Cliente(nomeCliente, cpfCliente, telefoneCliente);
+        this._agencia = new Agencia(numAgencia, numConta, gerente);
         this.valor = valor;
 
         this.operacoes = new ArrayList<>();
@@ -48,11 +39,11 @@ public class Conta {
     public String toString() {
         // TODO(#4) REFATORAR: Esses dados não estão relacionados a conta
         String dadosCliente = String.format("CPF: %s\nNome: %s\nTelefone: %s",
-                this.cpfCliente, this.nomeCliente, this.telefoneCliente);
+                this._cliente.cpf(), this._cliente.nome(), this._cliente.telefone());
 
         // TODO(#4) REFATORAR: Esses dados não estão relacinados a conta
         String dadosConta = String.format("Ag.: %d\nConta: %d\nGerente: %s\nSaldo: %.2f",
-                this.numAgencia, this.numConta, this.gerente, this.valor);
+                this._agencia.numagencia(), this._agencia.numconta(), this._agencia.gerente(), this.valor);
 
         // TODO(#5) REFATORAR: Essa operação não deveria estar sendo realizada neste método
         String dadosExtrato = "";
