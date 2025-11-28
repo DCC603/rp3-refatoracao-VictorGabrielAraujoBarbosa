@@ -8,15 +8,15 @@ public class Conta {
     private Agencia _agencia;
 
 
-    // TODO(#2) REFATORAR: Esse nome não é o ideal para representar o saldo da conta
-    private double valor;
+    // DONE(#2) REFATORAÇÃO 2: renomeia "valor" para "saldo"
+    private double saldo;
 
     private List<Operacao> operacoes;
 
     public Conta(String nomeCliente, String cpfCliente, String telefoneCliente, int numAgencia, int numConta, String gerente, double valor) {
         this._cliente = new Cliente(nomeCliente, cpfCliente, telefoneCliente);
         this._agencia = new Agencia(numAgencia, numConta, gerente);
-        this.valor = valor;
+        this.saldo = valor;
 
         this.operacoes = new ArrayList<>();
     }
@@ -31,9 +31,9 @@ public class Conta {
         this.operacoes.add(op);
 
         if (tipo == 'd')
-            this.valor += valor;
+            this.saldo += valor;
         else if(tipo == 's')
-            this.valor -= valor;
+            this.saldo -= valor;
     }
 
     public String toString() {
@@ -43,7 +43,7 @@ public class Conta {
 
         // TODO(#4) REFATORAR: Esses dados não estão relacinados a conta
         String dadosConta = String.format("Ag.: %d\nConta: %d\nGerente: %s\nSaldo: %.2f",
-                this._agencia.numagencia(), this._agencia.numconta(), this._agencia.gerente(), this.valor);
+                this._agencia.numagencia(), this._agencia.numconta(), this._agencia.gerente(), this.saldo);
 
         // TODO(#5) REFATORAR: Essa operação não deveria estar sendo realizada neste método
         String dadosExtrato = "";
