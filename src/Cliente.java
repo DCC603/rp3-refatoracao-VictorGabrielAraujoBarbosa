@@ -13,4 +13,8 @@ public class Cliente {
     public String cpf(){return _cpfCliente;}
     public String telefone(){return _telefoneCliente;}
 
+    public String toString(){
+        return String.format("CPF: %s\nNome: %s\nTelefone: %s",
+                _cpfCliente, _nomeCliente, _telefoneCliente);
+    }
 }

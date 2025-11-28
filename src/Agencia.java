@@ -13,4 +13,8 @@ public class Agencia {
     public int numconta(){return _numConta;}
     public String gerente(){return _gerente;}
 
+    public String toString(){
+        return String.format("Ag.: %d\nConta: %d\nGerente: %s",
+                _numAgencia, _numConta, _gerente);
+    }
 }

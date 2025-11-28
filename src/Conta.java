@@ -40,13 +40,8 @@ public class Conta {
     }
 
     public String toString() {
-        // TODO(#4) REFATORAR: Esses dados não estão relacionados a conta
-        String dadosCliente = String.format("CPF: %s\nNome: %s\nTelefone: %s",
-                this._cliente.cpf(), this._cliente.nome(), this._cliente.telefone());
-
-        // TODO(#4) REFATORAR: Esses dados não estão relacinados a conta
-        String dadosConta = String.format("Ag.: %d\nConta: %d\nGerente: %s\nSaldo: %.2f",
-                this._agencia.numagencia(), this._agencia.numconta(), this._agencia.gerente(), this.saldo);
+        // DONE(#4) REFATORAÇÃO 4: relocação de código por conta de feature envy
+        String dadosConta = String.format("Saldo: %.2f", saldo);
 
         // TODO(#5) REFATORAR: Essa operação não deveria estar sendo realizada neste método
         String dadosExtrato = "";
@@ -55,9 +50,10 @@ public class Conta {
         }
 
         return "-----CLIENTE-----\n" +
-                dadosCliente +
+                _cliente +
                 "\n\n" +
                 "-----CONTA-----\n" +
+                _agencia + "\n" + 
                 dadosConta +
                 "\n\n" +
                 "-----EXTRATO-----\n" +
