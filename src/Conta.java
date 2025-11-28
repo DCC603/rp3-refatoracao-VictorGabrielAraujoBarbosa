@@ -25,11 +25,14 @@ public class Conta {
         this(null, null, null, 0, 0, null, 0);
     }
 
-    // TODO(#3) REFATORAR: Muita responsabilidade para o mesmo método
+    // DONE(#3) REFATORAÇÃO 3: extração do método "modificarSaldo"
     public void realizarOperacao(char tipo, int valor) {
         Operacao op = new Operacao(tipo, valor);
         this.operacoes.add(op);
+        modificarSaldo(tipo, valor);
+    }
 
+    private void modificarSaldo(char tipo, int valor){
         if (tipo == 'd')
             this.saldo += valor;
         else if(tipo == 's')
