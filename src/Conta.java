@@ -38,16 +38,22 @@ public class Conta {
         else if(tipo == 's')
             this.saldo -= valor;
     }
+    
+    private String extrato(){
+        String extrato = "";
+        for(Operacao op : this.operacoes) {
+            extrato += op.toString() + "\n";
+        }
+        return extrato;
+    }
+
 
     public String toString() {
         // DONE(#4) REFATORAÇÃO 4: relocação de código por conta de feature envy
         String dadosConta = String.format("Saldo: %.2f", saldo);
 
-        // TODO(#5) REFATORAR: Essa operação não deveria estar sendo realizada neste método
-        String dadosExtrato = "";
-        for(Operacao op : this.operacoes) {
-            dadosExtrato += op.toString() + "\n";
-        }
+        // DONE(#5) REFATORAÇÃO 5: extração de método (extrato())
+        String dadosExtrato = extrato();
 
         return "-----CLIENTE-----\n" +
                 _cliente +
@@ -60,4 +66,5 @@ public class Conta {
                 dadosExtrato +
                 "\n";
     }
+    
 }
