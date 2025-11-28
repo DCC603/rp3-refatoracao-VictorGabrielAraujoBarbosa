@@ -26,16 +26,16 @@ public class Conta {
     }
 
     // DONE(#3) REFATORAÇÃO 3: extração do método "modificarSaldo"
-    public void realizarOperacao(char tipo, int valor) {
+    public void realizarOperacao(OperacaoTipo tipo, int valor) {
         Operacao op = new Operacao(tipo, valor);
         this.operacoes.add(op);
         modificarSaldo(tipo, valor);
     }
 
-    private void modificarSaldo(char tipo, int valor){
-        if (tipo == 'd')
+    private void modificarSaldo(OperacaoTipo tipo, int valor){
+        if (tipo.Equals('d'))
             this.saldo += valor;
-        else if(tipo == 's')
+        else if(tipo.Equals('s'))
             this.saldo -= valor;
     }
     
